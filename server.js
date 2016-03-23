@@ -1,5 +1,4 @@
 var Express = require('express');
-var PJ = require('./package.json');
 
 if ( process.env.NODE_ENV === 'production' ) {
     
@@ -29,7 +28,7 @@ if ( process.env.NODE_ENV === 'production' ) {
         require('./server/databaseConfig.js')(App);
         
         App.use(Express.static(__dirname + '/public'));
-        App.set("appName", "file-app-ud.herokuapp.com");
+        App.set("appName", "file-storer.herokuapp.com");
         
         require('./server/expressRoutes.js')(App);
         
@@ -47,7 +46,7 @@ if ( process.env.NODE_ENV === 'production' ) {
     require('./server/databaseConfig.js')(devApp);
     
     devApp.use(Express.static(__dirname + '/public'));
-    devApp.set("appName", PJ.name);
+    devApp.set("appName", file-storer.herokuapp.com);
     
     require('./server/expressRoutes.js')(devApp);
     

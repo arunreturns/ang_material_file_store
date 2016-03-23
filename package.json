@@ -8,7 +8,6 @@
     "prod": "NODE_ENV=production node server.js",
     "postinstall": "./node_modules/bower/bin/bower install"
   },
-  "_appName": "file-app-ud.herokuapp.com",
   "dependencies": {
     "bcrypt-nodejs": "latest",
     "body-parser": "~1.4.2",
