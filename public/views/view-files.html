@@ -1,0 +1,48 @@
+<div layout="row" layout-align="center center" ng-cloak>
+    <div flex>
+        <h3 class="md-headline">File List. Click to Download</h3>
+        <div layout="row">
+            <md-list flex ng-show="filesList">
+                <md-list-item class="md-1-line" ng-repeat="file in filesList">
+                    <md-button md-no-ink class="md-primary" href="/getFile/{{file._id}}">{{ file.filename }}</md-button>
+                    
+                    <span flex></span>
+                    
+                    <md-menu class="md-secondary">
+                        <md-button aria-label="Open options menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+                            <md-icon class="material-icons md-primary" md-menu-align-target>more_vert</md-icon>
+                        </md-button>
+                        <md-menu-content width="2">
+                            <md-menu-item>
+                                <md-button ng-click="sendMail(file._id)">
+                                    <md-icon class="material-icons md-primary" md-menu-align-target>email</md-icon>
+                                    Mail
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button ng-click="sendMessage(file._id)">
+                                    <md-icon class="material-icons md-primary" md-menu-align-target>sms</md-icon>
+                                    SMS
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-divider></md-menu-divider>
+                            <md-menu-item>
+                                <md-button ng-click="removeFile(file._id)">
+                                    <md-icon class="material-icons md-primary" md-menu-align-target>remove_circle</md-icon>
+                                    Remove
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </md-list-item>
+            </md-list>
+            <div flex ng-show="!filesList" layout="column" layout-align="center center">
+                <h5 class='md-subhead'>No files uploaded yet. Do you want to Upload some?</h5>
+                <md-button md-no-ink class="md-raised md-primary" href='#/upload' >
+                    <md-icon class="material-icons md-primary" md-menu-align-target>backup</md-icon>
+                    Upload
+                </md-button>
+            </div>
+        </div>
+    </div>
+</div>

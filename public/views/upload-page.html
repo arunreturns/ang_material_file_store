@@ -1,0 +1,85 @@
+<div layout="row" layout-align="center center">
+    <div layout="column" layout-align="center center">
+        <h3 class="md-headline">Upload files here</h3>
+        <div ng-hide='uploadAlt'>
+            <md-button class="md-raised md-primary" ngf-select="upload($file)" ng-disabled="f">
+                <md-icon class="material-icons md-primary" md-menu-align-target>backup</md-icon>
+                Upload Files
+            </md-button>
+        </div>
+        <md-switch aria-label="Use Alternate Method" ng-model="uploadAlt">
+            Use Alternate Method
+        </md-switch>
+        {{ altFiles }}
+        <div ng-show='uploadAlt'>
+            <form name='uploadForm'>
+                <md-card>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Alternate Upload</span>
+                            <span class="md-subhead">Use this only if the above method fails. Read the instructions carefully.</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content layout="column" layout-align="center center">
+                        
+                        <div layout="column">
+                            <p>
+                                This is only to upload text files. The other files will not be written properly.
+                                <ul>
+                                    <li>This consumes a zip. </li>
+                                    <li>Merges each file into a list and send a text POST request</li>
+                                    <li>In the backend each text is merged back into a zip</li>
+                                    <li>And uploaded to GridFS</li>
+                                </ul>
+                            </p>
+                        </div>
+                        <!--<div layout="row">
+                            <md-switch class='md-warn' aria-label="Create Zip" ng-model="createzip">
+                                Create Zip
+                            </md-switch>
+                        </div>
+                        <div layout="row" ng-show='createzip'>
+                            <md-input-container flex >
+                                <label>Zip Name</label>
+                                <input autocomplete="off" ng-maxlength="15" type="text" md-no-asterisk ng-model="zipname" 
+                                        name="zipname" ng-required="createzip">
+                                <div ng-messages="uploadForm.zipname.$error">
+                                    <div ng-message="maxlength">The zipname has to be less than 15 characters long.</div>
+                                </div>
+                                <md-icon class="material-icons md-primary" md-menu-align-target>archive</md-icon>
+                            </md-input-container>
+                        </div>-->
+                        <div layout="row">
+                            <md-button class="md-raised md-primary" ngf-select="" 
+                            ngf-accept="'.zip'" ng-required='true' ng-model="file">
+                                <md-icon class="material-icons md-primary" md-menu-align-target>folder</md-icon>
+                                <!--<label for="file-input">Select Files</label>-->
+                                Select Files
+                            </md-button>
+                        </div>
+                        <div layout="row">
+                            <md-input-container flex >
+                                <label>Folder Name</label>
+                                <input autocomplete="off" ng-maxlength="15" type="text" md-no-asterisk ng-model="foldername" 
+                                name="foldername" required>
+                                <div ng-messages="uploadForm.foldername.$error">
+                                    <div ng-message="maxlength">The foldername has to be less than 15 characters long.</div>
+                                </div>
+                                <md-icon class="material-icons md-primary" md-menu-align-target>folder</md-icon>
+                            </md-input-container>
+                        </div>
+                    </md-card-content>
+                    <md-card-actions layout="row" layout-align="end center">
+                        <md-button ng-disabled="!uploadForm.$valid" ng-click="uploadSecondary()">Upload</md-button>
+                    </md-card-actions>
+                </md-card>
+            </form>
+        </div>
+        <div ng-if="f">
+            <md-progress-linear md-mode="determinate" value="{{f.progress}}"></md-progress-linear>
+            <div class="text-center">
+                <h4>Uploading {{ f.name }}</h4>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div layout="column" layout-align="center center">
+    <h3 class="md-headline">Select one of the options below</h3>
+    <div flex-gt-sm="66">
+        <md-list>
+            <md-list-item layout="column" layout-align="center stretch" ng-repeat="menu in menuLinks">
+                <md-button md-no-ink class="md-raised md-primary" href='{{menu.link}}' >
+                    <md-icon class="material-icons md-primary" md-menu-align-target>{{menu.icon}}</md-icon>
+                    {{menu.name}}
+                </md-button>
+            </md-list-item>
+        </md-list>
+    </div>
+</div>

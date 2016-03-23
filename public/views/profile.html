@@ -1,0 +1,102 @@
+<div layout="row" layout-align="center center">
+    <div flex-gt-sm="66">
+    <h3 class="md-headline">Profile</h3>
+
+    <form name="userDetails" role="form" novalidate>
+        <div layout="row">
+            <md-input-container flex>
+                <label>First Name</label>
+                <input autocomplete="off" ng-maxlength="30" type="text" md-no-asterisk ng-model="user.firstName" name="firstName" 
+                        ng-required="true" ng-pattern="/^[a-z\s]+$/i">
+                <div ng-messages="userDetails.firstName.$error">
+                    <div ng-message="required">This is required.</div>
+                    <div ng-message="maxlength">The first name has to be less than 30 characters long.</div>
+                    <div ng-message="pattern">The first name can only have alphabets and spaces.</div>
+                </div>
+                <md-icon class="material-icons md-primary" md-menu-align-target>person</md-icon>
+            </md-input-container>
+        </div>
+        <div layout="row">
+            <md-input-container flex >
+                <label>Last Name</label>
+                <input autocomplete="off" ng-maxlength="30" type="text" md-no-asterisk ng-model="user.lastName" name="lastName" 
+                        ng-required="true" ng-pattern="/^[a-z\s]+$/i">
+                <div ng-messages="userDetails.lastName.$error">
+                    <div ng-message="required">This is required.</div>
+                    <div ng-message="maxlength">The last name has to be less than 30 characters long.</div>
+                    <div ng-message="pattern">The last name can only have alphabets and spaces.</div>
+                </div>
+                <md-icon class="material-icons md-primary" md-menu-align-target>person</md-icon>
+            </md-input-container>
+        </div>
+        <div layout="row">
+            <md-input-container flex>
+                <label>Email</label>
+                <input autocomplete="off" type="email" ng-model="user.email" name="email" ng-required="true">
+                <div ng-messages="userDetails.email.$error">
+                    <div ng-message="required">Email is required.</div>
+                    <div ng-message="email">Incorrect email format</div>
+                </div>
+                <md-icon class="material-icons md-primary" md-menu-align-target>email</md-icon>
+            </md-input-container>
+        </div>
+        <div layout="row">
+            <md-input-container flex>
+                <label>User Name</label>
+                <input autocomplete="off" ng-maxlength="30" type="text" md-no-asterisk ng-model="user.userName" name="userName" disabled>
+                <md-icon class="material-icons md-primary" md-menu-align-target>verified_user</md-icon>
+            </md-input-container>
+        </div>
+
+        <div layout="row">
+            <md-input-container flex>
+                <label>Phone Code</label>
+                <input autocomplete="off" type="text" md-no-asterisk ng-model="user.phoneNo.code" name="phoneCode" ng-required="true" disabled>
+                <md-icon class="material-icons md-primary" md-menu-align-target>code</md-icon>
+                <md-tooltip md-direction="top" ng-if='userDetails.phoneCode.$error'>
+                    Use the country select button
+                </md-tooltip>
+            </md-input-container>
+            
+            <md-input-container flex>
+                <label>Phone Country</label>
+                <input autocomplete="off" type="text" md-no-asterisk ng-model="user.phoneNo.country" name="phoneCountry" ng-required="true" disabled>
+                <md-icon class="material-icons md-primary" md-menu-align-target>location_city</md-icon>
+                <md-tooltip md-direction="top" ng-if='userDetails.phoneCode.$error'>
+                    Use the country select button
+                </md-tooltip>
+            </md-input-container>
+        </div>
+        <div layout="row">
+            <md-input-container flex>
+                <label>Phone Number</label>
+                <input autocomplete="off" ng-minlength="10" ng-maxlength="10" type="tel" ng-model="user.phoneNo.number" name="phoneNo" 
+                        ng-required="true" >
+                <div ng-messages="userDetails.phoneNo.$error" >
+                    <div ng-message="required">Phone number is required.</div>
+                    <div ng-message="minlength">Phone number must have at least 10 characters</div>
+                    <div ng-message="maxlength">Phone number must have only 10 characters</div>
+                </div>
+                <md-icon class="material-icons md-primary" md-menu-align-target>phone</md-icon>
+            </md-input-container>
+        </div>
+        
+        <div layout="row">
+            <md-button class="md-raised md-primary" ng-click='showCountrySelectDialog()'>
+                Show Country Select
+            </md-button>
+        </div>
+        
+        <md-button class="md-raised md-primary" ng-disabled="!userDetails.$dirty || !userDetails.$valid || clicked" ng-click="(clicked = !clicked) && updateUser()">
+            {{ clicked ? 'Updating..' : 'Update' }}
+        </md-button>
+         <md-button class="md-raised md-primary" ng-click="changePassword()">
+            Change Password
+        </md-button>
+    </form>
+
+    <hr>
+
+    <p>Go <a class="download-links" href="#/home">Home</a>.</p>
+    </div>
+</div>

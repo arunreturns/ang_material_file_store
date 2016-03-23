@@ -1,0 +1,30 @@
+<md-dialog aria-label="Country Select" ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Country Select</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="closeDialog()">
+                <md-icon class="material-icons" md-menu-align-target>close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <p>
+                Use this dialog to choose your country code automatically.
+            </p>
+            <md-autocomplete flex
+                md-floating-label="Select your country" md-selected-item="selectedItem" 
+                md-search-text="searchText" md-selected-item-change="setPhoneNumber(item)" 
+                md-items="item in querySearch(searchText)" md-item-text="item.name" md-min-length="0"
+                placeholder="Select your state?" md-autofocus=true>
+                    <md-item-template>
+                        <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.name}}</span>
+                    </md-item-template>
+                <md-not-found>
+                    No states matching "{{searchText}}" were found.
+                </md-not-found>
+            </md-autocomplete>
+        </div>
+    </md-dialog-content>
+</md-dialog>
