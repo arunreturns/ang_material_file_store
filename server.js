@@ -46,7 +46,7 @@ if ( process.env.NODE_ENV === 'production' ) {
     require('./server/databaseConfig.js')(devApp);
     
     devApp.use(Express.static(__dirname + '/public'));
-    devApp.set("appName", file-storer.herokuapp.com);
+    devApp.set("appName", "file-storer.herokuapp.com");
     
     require('./server/expressRoutes.js')(devApp);
     
